@@ -1,0 +1,62 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" MouseLeftButtonDown="Window_MouseLeftButtonDown" WindowStyle="None" AllowsTransparency="True"
+        Background="Transparent">
+    <Canvas Height="350" Width="550">
+        <Path Stroke="Gray" StrokeThickness="2" Name="UIPath" Stretch="Fill" Width="702" Canvas.Left="-87" Canvas.Top="10">
+            <Path.Fill>
+                <SolidColorBrush Color="#3399FF"/>
+            </Path.Fill>
+
+            <Path.Data>
+                <PathGeometry>
+                    <PathFigure StartPoint="90,0">
+                        <ArcSegment Size="150,150" RotationAngle="180"
+                                    IsLargeArc="True" Point="60,350"
+                                    SweepDirection="Counterclockwise"/>
+                        <LineSegment Point="375,350"/>
+                        <ArcSegment Size="150,150" RotationAngle="180"
+                                    IsLargeArc="True" Point="410,0"
+                                    SweepDirection="Counterclockwise"/>
+                        <LineSegment Point="50,0"/>
+                    </PathFigure>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+        <DockPanel Canvas.Left="10" Canvas.Top="58" Width="475" Height="239">
+            <ToolBar DockPanel.Dock="Top" Margin="0,0,-38,0">
+                <Button Name="btnNew" Content="New" VerticalAlignment="Top" Click="btnNew_Click" />
+                <Separator/>
+                <Button Name="btnOpen" Content="Open" VerticalAlignment="Bottom" Click="btnOpen_Click" />
+                <Separator/>
+                <Button Name="btnSave" Content="Save" Click="btnSave_Click" />
+
+
+                <ToggleButton Command="EditingCommands.ToggleBold" Name="btnBold"
+                              Content="B"/>
+                <ToggleButton Command="EditingCommands.ToggleItalic" Name="btnItalic"
+                              Content="I"/>
+                <ToggleButton Command="EditingCommands.ToggleUnderline" Name="btnUnderline"
+                              Content="U"/>
+                <Separator/>
+                <ComboBox Name="cmbFontFamily" Width="150" SelectionChanged="cmbFontFamily_SelectionChanged" />
+                <ComboBox Name="cmbFontSize" Width="40" IsEditable="True" TextBoxBase.TextChanged="cmbFontSize_TextChanged" IsEnabled="True" />
+                <Button Name="btnColor" Click="btnColor_Click" Width="20" Margin="0,1" VerticalAlignment="Stretch"/>
+                <Separator/>
+                <Button Name="btnDate" Content="Date" Click="btnDate_Click" />
+                <Separator/>
+                <Button Name="btnFR" Content="Find/replace" Click="btnFR_Click"/>
+            </ToolBar>
+            <RichTextBox Name="rtbEditor" TextChanged="rtbEditor_TextChanged" KeyDown="rtbEditor_KeyDown" SelectionChanged="rtbEditor_SelectionChanged" Margin="0,0,-38,0"/>
+        </DockPanel>
+        <Button Name="btnClose" Click="btnClose_Click"  Content="Close" Canvas.Left="370" Canvas.Top="302" Height="38" Width="53"/>
+        <Label Content="Words count: " Canvas.Left="47" Canvas.Top="307" FontSize="18"/>
+        <Label Name="lblBroj" Width="30" Content="" Canvas.Left="172" Canvas.Top="307" RenderTransformOrigin="0.543,0.581" FontSize="18"/>
+
+    </Canvas>
+</Window>
